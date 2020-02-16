@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 
+// core components
 import {
   chartOptions,
   parseOptions,
   chartExample1,
   chartExample2
-} from "../variables/charts";
+} from "../../variables/charts";
 
 @Component({
   selector: 'app-dashboard',
@@ -51,6 +52,10 @@ export class DashboardComponent implements OnInit {
 			data: chartExample1.data
 		});
   }
+
+
+
+
 
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;

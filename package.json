@@ -8,7 +8,6 @@
     "server": "npm run start:dev --prefix backend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
-
   },
   "keywords": [],
   "author": "",

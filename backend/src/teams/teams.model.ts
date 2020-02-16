@@ -1,14 +1,14 @@
 export interface Team {
   id: string;
   name: string;
-  shortName: string;
+  short_name: string;
   years: string;
-  totalGames: string;
-  totalWins: string;
-  totalLosses: string;
-  winPercentage: string;
+  total_games: string;
+  total_wins: string;
+  total_losses: string;
+  win_loss_percentage: string;
   champions: string;
-  ontherNames: string[];
+  other_names: string;
   link: string;
   active: boolean;
 }

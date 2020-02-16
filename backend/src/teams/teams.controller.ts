@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { Team } from './teams.model';
 
-@Controller('teams')
+@Controller('api/teams')
 export class TeamsController {
     constructor(private teamsService: TeamsService) {}
 
