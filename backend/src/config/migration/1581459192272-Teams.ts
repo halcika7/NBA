@@ -1,4 +1,4 @@
-import { Teams } from './../teams/teams.entity';
+import { Teams } from '../../teams/teams.entity';
 import { MigrationInterface, QueryRunner, Table, TableIndex, getConnection } from 'typeorm';
 import { join } from 'path';
 import * as fs from 'fs';

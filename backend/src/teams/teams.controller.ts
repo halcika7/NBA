@@ -1,13 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { Team } from './teams.model';
 
-@Controller('api/teams')
+@Controller('teams')
 export class TeamsController {
-    constructor(private teamsService: TeamsService) {}
+    constructor(private readonly teamsService: TeamsService) {}
 
     @Get()
-    getAllTeams(): Team[] {
+    getAllTeams(): Promise<Team[]> {
         return this.teamsService.getAllTeams();
+    }
+
+    @Get(':id')
+    getTeam(@Param('id') id): Promise<Team> {
+        return this.teamsService.getTeam(id);
     }
 }

@@ -8,9 +8,9 @@ module.exports = {
   password: DB_PASSWORD,
   database: DB_NAME,
   entities: ['dist/**/*.entity.js'],
-  migrations: ['dist/migration/**/*.js'],
+  migrations: ['dist/config/migration/**/*.js'],
   cli: {
-    migrationsDir: 'dist/migration'
+    migrationsDir: 'dist/config/migration'
   },
   synchronize: true
 };

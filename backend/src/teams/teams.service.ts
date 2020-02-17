@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { Team } from './teams.model';
+import { Teams } from './teams.entity';
 
 @Injectable()
 export class TeamsService {
-    private teams: Team[] = [];
+    getAllTeams(): Promise<Team[]> {
+        return Teams.find();
+    }
 
-    getAllTeams(): Team[] {
-        return this.teams;
+    getTeam(id: string): Promise<Team> {
+        return Teams.findOne({ where: { id } });
     }
 }
