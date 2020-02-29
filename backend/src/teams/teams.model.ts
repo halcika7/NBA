@@ -11,4 +11,5 @@ export interface Team {
   other_names: string;
   link: string;
   active: boolean;
+  conference: string;
 }

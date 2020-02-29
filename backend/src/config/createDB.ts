@@ -15,14 +15,17 @@ pg.connect()
           .query(`ALTER USER postgres SET timezone='UTC'`)
           .then(() => {
             console.log('timezone set to UTC');
+            client.release()
             process.kill(process.pid);
           })
           .catch(err => {
+            client.release()
             console.log('timezone not set to UTC');
             process.kill(process.pid);
           });
       })
       .catch(err => {
+        client.release()
         console.log('db exists');
         process.kill(process.pid);
       });

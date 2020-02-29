@@ -1,7 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { IconService } from './../../icon.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,30 +10,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  public focus;
-  public listTitles: any[];
-  public location: Location;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router) {
-    this.location = location;
-  }
+  isExpanded: boolean = false;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => { console.log(result); return result.matches}),
+      shareReplay()
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver, private iconService: IconService) {}
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
-  }
-  
-  getTitle(){
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    if(titlee.charAt(0) === '#'){
-        titlee = titlee.slice( 1 );
-    }
-
-    for(var item = 0; item < this.listTitles.length; item++){
-        if(this.listTitles[item].path === titlee){
-            return this.listTitles[item].title;
-        }
-    }
-    return 'Dashboard';
+    this.iconService.registerIcons();
   }
 
 }

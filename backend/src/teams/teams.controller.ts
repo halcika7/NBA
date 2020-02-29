@@ -15,4 +15,9 @@ export class TeamsController {
     getTeam(@Param('id') id): Promise<Team> {
         return this.teamsService.getTeam(id);
     }
+
+    @Get('season/stats')
+    getSeasonStats(): Promise<any> {
+        return this.teamsService.getSeasonStats();
+    }
 }
