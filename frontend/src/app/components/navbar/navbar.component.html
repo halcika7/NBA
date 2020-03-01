@@ -1,59 +1,77 @@
-<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-  <div class="container-fluid">
-    <!-- Brand -->
-    <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active" [routerLink]="['/dashboard']">{{getTitle()}}</a>
-    <!-- Form -->
-    <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-      <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
-        <div class="input-group input-group-alternative">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-search"></i></span>
-          </div>
-          <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
-          (blur)="focus = false">
-        </div>
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav
+    #drawer
+    class="sidenav mat-elevation-z3"
+    [class.expanded]="isExpanded"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="'side'"
+    [opened]="true"
+  >
+    <mat-toolbar>
+      <img src="assets/icons/nba.png" alt="" srcset="" />
+      <span>Dashboard</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item [ngClass]="{ 'justify-center': !isExpanded }">
+        <mat-icon mat-list-icon svgIcon="dashboard" class="primary"></mat-icon>
+        <h4 mat-line>Dashboard</h4>
+      </mat-list-item>
+      <mat-list-item [ngClass]="{ 'justify-center': !isExpanded }">
+        <mat-icon mat-list-icon svgIcon="user" class="primary"></mat-icon>
+        <h4 mat-line>Profile</h4>
+      </mat-list-item>
+      <mat-divider [ngStyle]="{ margin: '5px 0' }"></mat-divider>
+      <mat-list-item [ngClass]="{ 'justify-center': !isExpanded }">
+        <mat-icon mat-list-icon svgIcon="scoreboard" class="primary"></mat-icon>
+        <h4 mat-line>Scores</h4>
+      </mat-list-item>
+      <mat-list-item [ngClass]="{ 'justify-center': !isExpanded }">
+        <mat-icon mat-list-icon svgIcon="schedule" class="primary"></mat-icon>
+        <h4 mat-line>Schedule</h4>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z3">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="isExpanded = !isExpanded"
+      >
+        <mat-icon
+          aria-label="Side nav toggle icon"
+          [svgIcon]="!isExpanded ? 'right-alignment' : 'left-alignment'"
+          class="white"
+        ></mat-icon>
+      </button>
+      <img src="assets/icons/nba.png" alt="" srcset="" />
+      <span>NBA</span>
+      <div class="buttons flex-end">
+        <button mat-button>
+          <mat-icon svgIcon="login" class="white" id="login-icon"></mat-icon>Login
+        </button>
+        <button mat-button>
+          <mat-icon svgIcon="signup" class="white" id="register-icon"></mat-icon>SignUp
+        </button>
       </div>
-    </form>
-    <!-- User -->
-    <ul class="navbar-nav align-items-center d-none d-md-flex">
-      <li class="nav-item" ngbDropdown placement="bottom-right">
-        <a class="nav-link pr-0" role="button" ngbDropdownToggle>
-          <div class="media align-items-center">
-            <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
-            </span>
-            <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
-            </div>
-          </div>
-        </a>
-        <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
-          <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Welcome!</h6>
-          </div>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-single-02"></i>
-            <span>My profile</span>
-          </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-settings-gear-65"></i>
-            <span>Settings</span>
-          </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-calendar-grid-58"></i>
-            <span>Activity</span>
-          </a>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-support-16"></i>
-            <span>Support</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
-            <i class="ni ni-user-run"></i>
-            <span>Logout</span>
-          </a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <!-- <button mat-button [matMenuTriggerFor]="menu" class="flex-end">
+        Account
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon svgIcon="login" class="primary" id="login-icon"></mat-icon>Login
+        </button>
+        <button mat-menu-item>
+          <mat-icon svgIcon="signup" class="primary" id="register-icon"></mat-icon>SignUp
+        </button>
+      </mat-menu> -->
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <app-dashboard></app-dashboard>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

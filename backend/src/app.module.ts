@@ -5,6 +5,8 @@ import { typeormConfig } from './config/typeorm.config';
 import { CsvModule } from 'nest-csv-parser';
 import { PlayersModule } from './players/players.module';
 import { GamesModule } from './games/games.module';
+import { CoachesModule } from './coaches/coaches.module';
+import { PlayerStatsModule } from './player-stats/player-stats.module';
 
 @Module({
   imports: [
@@ -12,7 +14,9 @@ import { GamesModule } from './games/games.module';
     TypeOrmModule.forRoot(typeormConfig),
     CsvModule,
     PlayersModule,
-    GamesModule
+    GamesModule,
+    CoachesModule,
+    PlayerStatsModule
   ]
 })
 export class AppModule {}

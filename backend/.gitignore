@@ -36,3 +36,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 .env
+
+/python_modules
+
+./seeder/game_player_data.csv
