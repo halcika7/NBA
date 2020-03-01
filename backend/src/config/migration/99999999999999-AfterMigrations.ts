@@ -12,23 +12,23 @@ export class AfterMigrations1583070579935 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<any> {
         await queryRunner.manager.query(`
             COPY public.teams
-                FROM '${teams_csv_path}'
+                FROM '/Users/harisbeslic/temp/teams.csv'
             DELIMITER ',' CSV HEADER;
         
             COPY public.players
-                FROM '${players_csv_path}'
+                FROM '/Users/harisbeslic/temp/players.csv'
             DELIMITER ',' CSV HEADER;
         
             COPY public.coaches
-                FROM '${coaches_csv_path}'
+                FROM '/Users/harisbeslic/temp/coaches.csv'
             DELIMITER ',' CSV HEADER;
         
             COPY public.games
-                FROM '${games_csv_path}'
+                FROM '/Users/harisbeslic/temp/games.csv'
             DELIMITER ',' CSV HEADER;
         
             COPY public.player_stats
-                FROM '${game_player_data_csv_path1}'
+                FROM '/Users/harisbeslic/temp/game_player_data_1.csv'
             WITH (
                 FORMAT csv,
                 NULL 'null',
@@ -37,7 +37,7 @@ export class AfterMigrations1583070579935 implements MigrationInterface {
             );
 
             COPY public.player_stats
-                FROM '${game_player_data_csv_path2}'
+                FROM '/Users/harisbeslic/temp/game_player_data_2.csv'
             WITH (
                 FORMAT csv,
                 NULL 'null',
