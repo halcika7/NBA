@@ -16,7 +16,8 @@ import { PlayerStatsModule } from './player-stats/player-stats.module';
     PlayersModule,
     GamesModule,
     CoachesModule,
-    PlayerStatsModule
+    PlayerStatsModule,
+    CoachesModule
   ]
 })
 export class AppModule {}
