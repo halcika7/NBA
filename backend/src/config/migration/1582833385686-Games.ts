@@ -90,10 +90,18 @@ export class Games1582833385686 implements MigrationInterface {
         );
 
         await queryRunner.createIndex(
-            'teams',
+            'games',
             new TableIndex({
-                name: 'IDX__GAMES',
-                columnNames: ['id', 'season', 'playoff', 'away_team_id', 'home_team_id', 'date']
+                name: 'IDX__GAMES_1',
+                columnNames: ['season', 'playoff', 'home_team_id']
+            })
+        );
+
+        await queryRunner.createIndex(
+            'games',
+            new TableIndex({
+                name: 'IDX__GAMES_2',
+                columnNames: ['season', 'playoff', 'away_team_id']
             })
         );
     }

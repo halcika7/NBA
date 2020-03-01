@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class Teams1581459192272 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<any> {
@@ -72,14 +72,6 @@ export class Teams1581459192272 implements MigrationInterface {
                 ]
             }),
             true
-        );
-
-        await queryRunner.createIndex(
-            'teams',
-            new TableIndex({
-                name: 'IDX__TEAMS',
-                columnNames: ['id', 'name', 'short_name', 'link', 'other_names']
-            })
         );
     }
 

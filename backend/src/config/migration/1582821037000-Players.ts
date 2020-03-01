@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class Players1582821037000 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<any> {
@@ -90,14 +90,6 @@ export class Players1582821037000 implements MigrationInterface {
                 referencedColumnNames: ['id'],
                 referencedTableName: 'teams',
                 onDelete: 'CASCADE'
-            })
-        );
-
-        await queryRunner.createIndex(
-            'teams',
-            new TableIndex({
-                name: 'IDX__PLAYERS',
-                columnNames: ['id', 'name', 'short_name', 'link', 'other_names']
             })
         );
     }

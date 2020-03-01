@@ -193,38 +193,10 @@ export class PlayerStats1583007541461 implements MigrationInterface {
         );
 
         await queryRunner.createIndex(
-            'teams',
+            'player_stats',
             new TableIndex({
-                name: 'IDX__PLAYER_STATS',
-                columnNames: [
-                    'id',
-                    'game_id',
-                    'team_id',
-                    'opponent_team_id',
-                    'player_id',
-                    'minutes',
-                    'fg',
-                    'fga',
-                    'fgp',
-                    'fg3',
-                    'fg3a',
-                    'fg3p',
-                    'ft',
-                    'fta',
-                    'ftp',
-                    'orb',
-                    'drb',
-                    'trb',
-                    'ast',
-                    'stl',
-                    'blk',
-                    'tov',
-                    'pf',
-                    'pts',
-                    'plus_minus',
-                    'season',
-                    'playoff'
-                ]
+                name: 'IDX__PLAYER_STATS_1',
+                columnNames: ['season', 'playoff', 'team_id']
             })
         );
     }

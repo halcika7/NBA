@@ -5,8 +5,8 @@ const teams_csv_path = resolve('./seeder/teams.csv');
 const players_csv_path = resolve('./seeder/players.csv');
 const coaches_csv_path = resolve('./seeder/coaches.csv');
 const games_csv_path = resolve('./seeder/games.csv');
-const game_player_data_csv_path1 = resolve('./seeder/game_player_data1.csv');
-const game_player_data_csv_path2 = resolve('./seeder/game_player_data2.csv');
+const game_player_data_csv_path1 = resolve('./seeder/game_player_data_1.csv');
+const game_player_data_csv_path2 = resolve('./seeder/game_player_data_2.csv');
 
 export class AfterMigrations1583070579935 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<any> {
