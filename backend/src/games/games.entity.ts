@@ -1,17 +1,30 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+    BaseEntity,
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    Index,
+    ManyToOne,
+    JoinColumn
+} from 'typeorm';
+import { Team } from 'teams/entities/teams.entity';
 
 @Entity({ name: 'games' })
+@Index('IDX__GAMES_1', ['season', 'playoff', 'home_team_id'])
+@Index('IDX__GAMES_2', ['season', 'playoff', 'away_team_id'])
 export class Game extends BaseEntity {
     @PrimaryGeneratedColumn('rowid')
     id: number;
 
-    @Column('int')
+    @ManyToOne(type => Team)
+    @JoinColumn({ name: 'home_team_id' })
     home_team_id: number;
 
     @Column('int')
     home_team_score: number;
 
-    @Column('int')
+    @ManyToOne(type => Team)
+    @JoinColumn({ name: 'away_team_id' })
     away_team_id: number;
 
     @Column('int')

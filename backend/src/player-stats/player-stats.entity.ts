@@ -1,20 +1,36 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+    BaseEntity,
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    Index,
+    ManyToOne,
+    JoinColumn
+} from 'typeorm';
+import { Game } from 'games/games.entity';
+import { Team } from 'teams/entities/teams.entity';
+import { Player } from 'players/players.entity';
 
 @Entity({ name: 'player_stats' })
+@Index('IDX__PLAYER_STATS_1', ['season', 'playoff', 'team_id'])
 export class PlayerStat extends BaseEntity {
     @PrimaryGeneratedColumn('rowid')
     id: number;
 
-    @Column('int')
+    @ManyToOne(type => Game)
+    @JoinColumn({ name: 'game_id' })
     game_id: number;
 
-    @Column('int')
+    @ManyToOne(type => Team)
+    @JoinColumn({ name: 'team_id'})
     team_id: number;
 
-    @Column('int')
+    @ManyToOne(type => Team)
+    @JoinColumn({ name: 'opponent_team_id'})
     opponent_team_id: number;
 
-    @Column('int')
+    @ManyToOne(type => Player)
+    @JoinColumn({ name: 'player_id'})
     player_id: number;
 
     @Column('double precision', { nullable: true })

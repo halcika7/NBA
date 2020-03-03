@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { spawn } from 'child_process';
 import * as path from 'path';
+import { URL } from './config/configs';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -21,6 +22,10 @@ async function bootstrap() {
     // s.stderr.on('close', () => {
     //     console.log('Closed');
     // });
+    app.enableCors({
+        origin: URL,
+        credentials: true
+    });
     app.setGlobalPrefix('api');
     await app.listen(5000);
 }

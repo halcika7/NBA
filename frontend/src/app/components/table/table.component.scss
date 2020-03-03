@@ -9,3 +9,34 @@
 .padding {
   padding: 15px;
 }
+
+::ng-deep {
+  .ngx-datatable.fixed-row
+    .datatable-scroll
+    .datatable-body-row
+    .datatable-body-cell,
+  .ngx-datatable.fixed-header
+    .datatable-header
+    .datatable-header-inner
+    .datatable-header-cell {
+    display: flex;
+    align-items: center;
+  }
+
+  .ngx-datatable.fixed-header
+    .datatable-header
+    .datatable-header-inner
+    .datatable-header-cell {
+    padding: 0.4rem 1.2rem;
+  }
+
+  .ngx-datatable.material {
+    border-radius: 4px;
+    padding: 15px 0px;
+  }
+
+  .ngx-datatable.scroll-horz .datatable-body,
+  .ngx-datatable .datatable-header {
+    min-width: 100% !important;
+  }
+}

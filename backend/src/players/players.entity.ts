@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Team } from 'teams/entities/teams.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity({ name: 'players' })
 export class Player extends BaseEntity {
@@ -32,7 +33,8 @@ export class Player extends BaseEntity {
     @Column('varchar')
     player_url: string;
 
-    @Column('int', { nullable: true })
+    @ManyToOne(type => Team)
+    @JoinColumn({ name: 'current_team_id' })
     current_team_id: number;
 
     @Column('json')

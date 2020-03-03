@@ -1,4 +1,5 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Team } from 'teams/entities/teams.entity';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 
 @Entity({ name: 'coaches' })
 export class Coach extends BaseEntity {
@@ -29,7 +30,8 @@ export class Coach extends BaseEntity {
     @Column('boolean')
     retired: boolean;
 
-    @Column('int')
+    @OneToOne(type => Team)
+    @JoinColumn({ name: 'currently_coaching' })
     currently_coaching: number;
 
     @Column('json')
